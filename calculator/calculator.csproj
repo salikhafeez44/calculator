@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  
   </PropertyGroup>
 
 </Project>
