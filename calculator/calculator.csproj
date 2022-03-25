@@ -4,10 +4,13 @@
     <OutputType>WinExe</OutputType>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TargetFramework>net5.0-windows</TargetFramework>
-	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+	<SelfContained>true</SelfContained>
+	<PublishSingleFile>True</PublishSingleFile>
+	<PublishReadyToRun>False</PublishReadyToRun>
+	<PublishTrimmed>False</PublishTrimmed>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-	  
+    <UseWPF>true</UseWPF>  
   </PropertyGroup>
 
 </Project>
