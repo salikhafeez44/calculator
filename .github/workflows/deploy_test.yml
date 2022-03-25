@@ -4,7 +4,6 @@ on:
   push:
   tags:
    - "Test/v*"
-
 env:
  PROJECT_PATH: calculator/calculator.csproj
 
