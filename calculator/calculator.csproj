@@ -4,8 +4,7 @@
     <OutputType>WinExe</OutputType>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TargetFramework>net5.0-windows</TargetFramework>
-	<ExcludeAssets>all</ExcludeAssets>
-	<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	  
