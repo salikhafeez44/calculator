@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TargetFramework>net5.0-windows</TargetFramework>
+	<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	  
