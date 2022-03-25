@@ -10,19 +10,17 @@ on:
 env:
  PROJECT_PATH: calculator/calculator.csproj
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
  deploy:
   runs-on: windows-2022
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1 
       with:
        dotnet-version: 5.0.x
-
+      
     - run: dotnet restore ${{ env.PROJECT_PATH }}
-    - run: dontnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
+    - run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
     - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
     - uses: actions/create-release@v1
       id: create_release
