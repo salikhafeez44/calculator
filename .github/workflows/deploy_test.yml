@@ -6,7 +6,7 @@ on:
    - "Test/v*"
 
 env:
- PROJECT_PATH: calculator/calculator.csproj
+ PROJECT_PATH: calculator.csproj
 
 jobs:
  deploy:
