@@ -25,8 +25,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
           path: ${{ github.workspace }}\setup\setup.msi
-          asset_name: setup
-          asset_content_type: setup.msi
-          
+          name: setup
