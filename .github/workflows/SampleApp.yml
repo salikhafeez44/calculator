@@ -13,7 +13,7 @@ jobs:
           advinst-version: '19.0'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
           advinst-enable-automation: 'true'
-          aip-path: ${{ github.workspace }}\Setup.aip
+          aip-path: ${{ github.workspace }}\Setup\Setup.aip
           aip-build-name: DefaultBuild
           aip-package-name: setup.msi
           aip-output-dir:  ${{ github.workspace }}\setup
