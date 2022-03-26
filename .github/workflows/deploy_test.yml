@@ -33,22 +33,3 @@ jobs:
        pattern: calculator/bin/Release/net5.0-windows/win-x64/publish/*.exe
        release-url: ${{ steps.create_release.outputs.upload_url }}
   
-
-    - uses: caphyon/advinst-github-action@v1.0
-      name: Build AIP
-      with:
-          advinst-version: '19.3'
-          advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
-          advinst-enable-automation: 'true'
-          aip-path: ${{ github.workspace }}\Setup\Setup.aip
-          aip-build-name: DefaultBuild
-          aip-package-name: setup.msi
-          aip-output-dir:  ${{ github.workspace }}\setup
-          aip-commands: |
-            SetProperty FOO="foo"
-            SetVersion 1.2.0
-    - uses: actions/upload-artifact@v2
-      name: Publish setup artifact
-      with:
-          name: setup
-          path: ${{ github.workspace }}\setup\setup.msi
