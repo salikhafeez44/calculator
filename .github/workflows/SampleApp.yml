@@ -22,6 +22,9 @@ jobs:
             SetVersion 1.2.0
       - name: Publish setup artifact
         uses: actions/upload-artifact@v2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           name: setup
           path: ${{ github.workspace }}\setup\setup.msi
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
