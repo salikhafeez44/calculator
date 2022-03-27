@@ -10,9 +10,9 @@ jobs:
       - name: Deploy Advinst
         uses: caphyon/advinst-github-action@v1.0
         with:
-          advinst-version: '19.0'
+          advinst-version: '19.3'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: Build app for release
-        run: msbuild ${{ github.workspace }}\MyAwesomeApp\MyAwesomeApp.sln
+        run: msbuild ${{ github.workspace }}\calculator\calculator.sln
