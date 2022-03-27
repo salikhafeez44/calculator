@@ -15,4 +15,4 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: Build app for release
-        run: msbuild ${{ github.workspace }}\calculator\calculator.sln
+        run: msbuild ${{ github.workspace }}\calculator.sln
