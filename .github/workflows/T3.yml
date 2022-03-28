@@ -44,7 +44,7 @@ jobs:
         env:
          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-         upload_url: ${{ needs.Aip-release.outputs.url }}
+         upload_url: ${{ steps.create-new-release.outputs.upload_url }}
          asset_path: ${{ github.workspace }}\setup\setup.msi
          asset_name: setup-v${{ github.run_number }}.msi
          asset_content_type: application/setup
