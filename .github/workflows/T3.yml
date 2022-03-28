@@ -1,18 +1,18 @@
-name: Build Advanced Installer Project (.AIP)
-on:
- push:
-  tags:
-   - "Test/v*"
+name: MSI Build & Release
+
+on: [workflow_dispatch]
 
 env:
  PROJECT_PATH: calculator/calculator.csproj
+
 jobs:
-  advinst-aip-build-demo:
+  Aip-build:
     runs-on: windows-latest
-    name: Build Aip Demo
+    name: Aip Build
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+          
       - name: Build AIP
         uses: caphyon/advinst-github-action@v1.0
         with:
@@ -26,6 +26,26 @@ jobs:
           aip-commands: |
             SetProperty FOO="foo"
             SetVersion 1.2.0
+            
+      - name: Create GitHub release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+         tag_name: ${{ github.run_number }}
+         release_name: Release ${{ github.run_number }}
+         
+      - name: Upload release assest
+        uses: actions/upload-release-asset@v1
+        env:
+         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+         upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+         asset_path: ${{ github.workspace }}\setup\setup.msi
+         asset_name: setup-v${{ github.run_number }}.msi
+         asset_content_type: application/setup
+          
       - name: Publish setup artifact
         uses: actions/upload-artifact@v2
         env:
@@ -33,3 +53,4 @@ jobs:
         with:
           path: ${{ github.workspace }}\setup\setup.msi
           name: setup
+
