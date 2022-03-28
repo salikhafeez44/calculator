@@ -29,6 +29,8 @@ jobs:
     needs: [Aip-build]
     runs-on: windows-latest
     name: GitHub Release
+    outputs:
+     upload_url: ${{ steps.create-new-release.outputs.upload_url }}
     steps:
       - name: Create GitHub release
         id: create-new-release
