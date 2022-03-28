@@ -1,4 +1,4 @@
-name: Build Advanced Installer Project (.AIP)
+name: MSI Build & Release
 on:
  push:
   tags:
