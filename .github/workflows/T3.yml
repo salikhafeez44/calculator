@@ -4,10 +4,11 @@ on: [workflow_dispatch]
 
 env:
  PROJECT_PATH: calculator/calculator.csproj
+
 jobs:
-  advinst-aip-build-demo:
+  Aip-build:
     runs-on: windows-latest
-    name: Build Aip Demo
+    name: Aip Build
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -24,6 +25,11 @@ jobs:
           aip-commands: |
             SetProperty FOO="foo"
             SetVersion 1.2.0
+  Aip-release:
+    needs: [Aip-build]
+    runs-on: windows-latest
+    name: GitHub Release
+    steps:
       - name: Create GitHub release
         id: create-new-release
         uses: actions/create-release@v1
@@ -32,7 +38,12 @@ jobs:
         with:
          tag_name: ${{ github.run_number }}
          release_name: Release ${{ github.run_number }}
-         
+    
+  Aip-upload:
+     needs: [Aip-release]
+     runs-on: windows-latest
+     name: GitHub upload
+     steps:
       - name: Upload release assest
         uses: actions/upload-release-asset@v1
         env:
@@ -43,6 +54,11 @@ jobs:
          asset_name: setup-v${{ github.run_number }}.msi
          asset_content_type: application/setup
 
+  Aip-publish:
+     needs: [Aip-upload]
+     runs-on: windows-latest
+     name: GitHub Artifacts
+     steps:
       - name: Publish setup artifact
         uses: actions/upload-artifact@v2
         env:
