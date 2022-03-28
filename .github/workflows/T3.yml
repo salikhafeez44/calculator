@@ -29,8 +29,6 @@ jobs:
     needs: [Aip-build]
     runs-on: windows-latest
     name: GitHub Release
-    outputs:
-     url: ${{ steps.create-new-release.outputs.url }}
     steps:
       - name: Create GitHub release
         id: create-new-release
@@ -40,12 +38,7 @@ jobs:
         with:
          tag_name: ${{ github.run_number }}
          release_name: Release ${{ github.run_number }}
-    
-  Aip-upload:
-     needs: [Aip-release]
-     runs-on: windows-latest
-     name: GitHub upload
-     steps:
+         
       - name: Upload release assest
         uses: actions/upload-release-asset@v1
         env:
@@ -57,7 +50,7 @@ jobs:
          asset_content_type: application/setup
 
   Aip-publish:
-     needs: [Aip-upload]
+     needs: [Aip-release]
      runs-on: windows-latest
      name: GitHub Artifacts
      steps:
