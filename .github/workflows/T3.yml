@@ -1,8 +1,6 @@
 name: MSI Build & Release
-on:
- push:
-  tags:
-   - "Test/v*"
+
+on: [workflow_dispatch]
 
 env:
  PROJECT_PATH: calculator/calculator.csproj
