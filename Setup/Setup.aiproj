@@ -27,7 +27,7 @@
       <Name>calculator</Name>
       <Project>{437654f5-f610-4c75-be57-4136e1ecea9d}</Project>
       <Private>True</Private>
-      <OutputsToImport>PublishOutput</OutputsToImport>
+      <OutputsToImport>PublishOutput#FolderProfile#bin\Release\net5.0-windows\win-x64\publish\#Release#Any CPU#FileSystem#net5.0-windows#win-x64#false##false#</OutputsToImport>
     </ProjectReference>
   </ItemGroup>
   <Target Name="Build">
